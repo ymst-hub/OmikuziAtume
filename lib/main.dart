@@ -54,7 +54,6 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: const Text('おみくじ統計'),
           centerTitle: true,
-          leading: appBarSetting(),
           actions: [
             IconButton(
               icon: const Icon(
