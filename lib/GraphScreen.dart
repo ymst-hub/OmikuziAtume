@@ -84,10 +84,10 @@ class _GraphScreenState extends State<GraphScreen> {
                         data['selfResult'].toDouble(),
                         data['result'].toDouble(),
                         dotPainter: FlDotCirclePainter(
-                          color: lib.omikuziColor[data['selfResult'] + 1],
+                          color: lib.omikuziColor[data['result']],
                           radius: _createRadius(data['count'].toDouble()),
                           strokeWidth: 1,
-                          strokeColor: lib.omikuziColor[data['selfResult'] + 1],
+                          strokeColor: lib.omikuziColor[data['result']],
                         ),
                       ),
                   ],
