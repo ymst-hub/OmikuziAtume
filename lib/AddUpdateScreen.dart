@@ -107,7 +107,7 @@ class _AddUpdateScreenState extends State<AddUpdateScreen> {
                       child: Row(
                         children: [
                           const Text('内容', style: TextStyle(fontSize: 20)),
-                          SizedBox(width: marginPercent(20)),
+                          SizedBox(width: marginPercent(10)),
                           DropdownButton(
                             items: lib.selfResultList
                                 .map<DropdownMenuItem<int>>((String value) {
@@ -134,7 +134,7 @@ class _AddUpdateScreenState extends State<AddUpdateScreen> {
                       child: Row(
                         children: [
                           const Text('日時', style: TextStyle(fontSize: 20)),
-                          SizedBox(width: marginPercent(20)),
+                          SizedBox(width: marginPercent(15)),
                           OutlinedButton(
                             onPressed: () {
                               showDatePicker(

@@ -34,7 +34,7 @@ class _GraphScreenState extends State<GraphScreen> {
 
   double _createRadius(double count) {
     if (count == 0) return 0;
-    if (count > 50) return 50;
+    if (count > 200) return 200;
     return count;
   }
 

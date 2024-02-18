@@ -36,6 +36,41 @@ class _ListScreenState extends State<ListScreen> {
     });
   }
 
+  Future<void> _deleteThings(var index) async {
+    //アラートダイアログを表示する
+    _deleteAlert(index);
+  }
+
+  void _deleteAlert(var index) {
+    //アラートを生成
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+              title: const Text('削除の確認'),
+              content: const Text('本当に削除しますか？'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('キャンセル'),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // ダイアログを閉じる
+                  },
+                ),
+                TextButton(
+                  child: const Text('削除'),
+                  onPressed: () {
+                    DbHelper().deleteHakkeMainById(index);
+                    _createList();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ]
+          );
+        });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,12 +83,19 @@ class _ListScreenState extends State<ListScreen> {
                 size: 40,
                 color: lib.omikuziColor[allData[index]['result']],
               ),
+              trailing: IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: () {
+                  _deleteThings(allData[index]['id']);
+                },
+              ),
               title: Text(
-                  '${allData[index]['location']} ${lib.resultList[allData[index]['result']]}',
+                '${allData[index]['location']} ${lib.resultList[allData[index]['result']]}',
               ),
               subtitle: Text(
                 DateFormat('yyyy/MM/dd').format(
-                  DateTime.fromMillisecondsSinceEpoch(allData[index]['date'])),
+                    DateTime.fromMillisecondsSinceEpoch(
+                        allData[index]['date'])),
               ),
               onTap: () async {
                 //タップしたら詳細画面に遷移
